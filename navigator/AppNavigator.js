@@ -1,14 +1,14 @@
 import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+
+import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { HomeScreen, SettingsScreen } from '../screens';
 import colors from '../colors';
 
-const Tab = createMaterialBottomTabNavigator();
-
+const Tabs = AnimatedTabBarNavigator();
 const BOTTOM_TAB_SCREENS = [
 	{
 		name: 'HomeScreen',
@@ -20,39 +20,40 @@ const BOTTOM_TAB_SCREENS = [
 		name: 'SettingsScreen',
 		component: SettingsScreen,
 		icon: 'cog',
-		label: 'Preference'
+		label: 'Settings'
 	}
-	// {
-	// 	name: 's',
-	// 	component: SettingsScreen,
-	// 	icon: 'cog'
-	// }
 ];
 
 export default function AppNavigator() {
 	return (
 		<NavigationContainer>
-			<Tab.Navigator
-				activeColor={colors.primary}
-				barStyle={{ backgroundColor: '#FFFFFF' }}
-				shifting={true}
-				// labeled={false}
+			<Tabs.Navigator
+				tabBarOptions={{
+					activeTintColor: colors.light,
+					activeBackgroundColor: colors.secondary
+				}}
+				labeled={false}
 			>
 				{BOTTOM_TAB_SCREENS.map(({ name, component, icon, label }) => {
 					return (
-						<Tab.Screen
+						<Tabs.Screen
+							key={name}
 							name={name}
 							component={component}
 							options={{
 								tabBarLabel: label,
-								tabBarIcon: ({ color }) => (
-									<MaterialCommunityIcons name={icon} color={color} size={26} />
+								tabBarIcon: ({ focused, color }) => (
+									<MaterialCommunityIcons
+										name={`${icon}${!focused ? '-outline' : ''}`}
+										color={focused ? colors.light : colors.dark}
+										size={26}
+									/>
 								)
 							}}
 						/>
 					);
 				})}
-			</Tab.Navigator>
+			</Tabs.Navigator>
 		</NavigationContainer>
 	);
 }
