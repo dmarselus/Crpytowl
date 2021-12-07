@@ -8,7 +8,7 @@ import AppNavigator from './navigator/AppNavigator';
 
 function App() {
 	return (
-		<SafeAreaProvider>
+		<SafeAreaProvider style={{ backgroundColor: '#D4D4D4 ' }}>
 			<AppNavigator />
 		</SafeAreaProvider>
 	);

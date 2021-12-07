@@ -1,4 +1,5 @@
-import HomeScreen from './HomeScreen/HomeScreen';
-import SettingsScreen from './SettingsScreen/SettingsScreen';
+import HomeScreen from './Home/HomeScreen';
+import SettingsScreen from './Settings/SettingsScreen';
+import AuthLoadingScreen from './AuthLoading/AuthLoadingScreen';
 
-export { HomeScreen, SettingsScreen };
+export { HomeScreen, SettingsScreen, AuthLoadingScreen };

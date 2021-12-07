@@ -2,58 +2,29 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+// https://github.com/torgeadelin/react-native-animated-nav-tab-bar
+// import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
+import { createStackNavigator } from '@react-navigation/stack';
+// import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import BottomTabNavigator from './BottomTabNavigator';
+import { AuthLoadingScreen, SettingsScreen } from '../screens';
+// import colors from '../colors';
 
-import { HomeScreen, SettingsScreen } from '../screens';
-import colors from '../colors';
-
-const Tabs = AnimatedTabBarNavigator();
-const BOTTOM_TAB_SCREENS = [
-	{
-		name: 'HomeScreen',
-		component: HomeScreen,
-		icon: 'home',
-		label: 'Home'
-	},
-	{
-		name: 'SettingsScreen',
-		component: SettingsScreen,
-		icon: 'cog',
-		label: 'Settings'
-	}
-];
+const Stack = createStackNavigator();
 
 export default function AppNavigator() {
 	return (
 		<NavigationContainer>
-			<Tabs.Navigator
-				tabBarOptions={{
-					activeTintColor: colors.light,
-					activeBackgroundColor: colors.secondary
+			<Stack.Navigator
+				initialRouteName="AuthLoading"
+				screenOptions={{
+					headerShown: false,
+					presentation: 'card'
 				}}
-				labeled={false}
 			>
-				{BOTTOM_TAB_SCREENS.map(({ name, component, icon, label }) => {
-					return (
-						<Tabs.Screen
-							key={name}
-							name={name}
-							component={component}
-							options={{
-								tabBarLabel: label,
-								tabBarIcon: ({ focused, color }) => (
-									<MaterialCommunityIcons
-										name={`${icon}${!focused ? '-outline' : ''}`}
-										color={focused ? colors.light : colors.dark}
-										size={26}
-									/>
-								)
-							}}
-						/>
-					);
-				})}
-			</Tabs.Navigator>
+				<Stack.Screen name="AuthLoading" component={AuthLoadingScreen} />
+				<Stack.Screen name="BottomTab" component={BottomTabNavigator} />
+			</Stack.Navigator>
 		</NavigationContainer>
 	);
 }
