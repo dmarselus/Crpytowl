@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 // import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import BottomTabNavigator from './BottomTabNavigator';
-import { AuthLoadingScreen, SettingsScreen } from '../screens';
+import { AuthLoadingScreen, LoginScreen } from '../screens';
 // import colors from '../colors';
 
 const Stack = createStackNavigator();
@@ -16,13 +16,14 @@ export default function AppNavigator() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator
-				initialRouteName="AuthLoading"
+				initialRouteName="Login"
 				screenOptions={{
 					headerShown: false,
 					presentation: 'card'
 				}}
 			>
 				<Stack.Screen name="AuthLoading" component={AuthLoadingScreen} />
+				<Stack.Screen name="Login" component={LoginScreen} />
 				<Stack.Screen name="BottomTab" component={BottomTabNavigator} />
 			</Stack.Navigator>
 		</NavigationContainer>
