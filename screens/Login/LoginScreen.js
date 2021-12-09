@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Input, Button } from '../../shared';
+
 export default function LoginScreen() {
+	// console.log(firebaseConfig);
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ loading, setLoading ] = useState(false);
