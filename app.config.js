@@ -34,7 +34,10 @@ export default {
 			projectId: process.env.FIREBASE_PROJECT_ID,
 			storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
 			messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-			appId: process.env.FIREBASE_APP_ID
+			appId: process.env.FIREBASE_APP_ID,
+			googleIos: process.env.GOOGLE_IOS_CLIENT_ID,
+			googleAndroid: process.env.GOOGLE_ANDROID_CLIENT_ID,
+			cmcApiKey: process.env.CMC_API_KEY
 		}
 	}
 };

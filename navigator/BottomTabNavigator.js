@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { useContext ,useEffect} from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { UserContext } from '../context';
 
 // https://github.com/torgeadelin/react-native-animated-nav-tab-bar
 import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { HomeScreen, SettingsScreen } from '../screens';
+import { HomeScreen, SettingsScreen, LoginScreen } from '../screens';
 import colors from '../colors';
 
 const Tabs = AnimatedTabBarNavigator();
-const BOTTOM_TAB_SCREENS = [
-	{
-		name: 'HomeScreen',
-		component: HomeScreen,
-		icon: 'home',
-		label: 'Home'
-	},
-	{
-		name: 'SettingsScreen',
-		component: SettingsScreen,
-		icon: 'cog',
-		label: 'Settings'
-	}
-];
+
+
 
 export default function BottomTabNavigator() {
+	const { user } = useContext(UserContext);
+
+	const BOTTOM_TAB_SCREENS = [
+		{
+			name: 'HomeScreen',
+			component: HomeScreen,
+			icon: 'home',
+			label: 'Home'
+		},
+		{
+			name: 'SettingsScreen',
+			component: SettingsScreen,
+			icon: 'cog',
+			label: 'Settings'
+		},
+		{
+			name: 'LoginScreen',
+			component: user?.name ? SettingsScreen : LoginScreen,
+			icon: 'face',
+			label: 'Profile'
+		}
+	];
+
 	return (
 		<Tabs.Navigator
 			tabBarOptions={{
