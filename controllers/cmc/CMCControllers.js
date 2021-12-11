@@ -10,10 +10,11 @@ const cmcInstance = axios.create({
 });
 
 export function getTopCoins() {
+	// https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyListingsHistorical
 	return cmcInstance
-		.get(`cryptocurrency/map`, {params:{sort: "cmc_rank"}})
+		.get(`cryptocurrency/listings/historical`)
 		.then((resp) => {
-            // console.log(resp?.status, resp?.data)
+			console.log(resp)
 			if(resp?.status === 200) return resp?.data
 		})
 		.catch((e) => console.error(e));

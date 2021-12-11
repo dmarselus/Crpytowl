@@ -37,7 +37,8 @@ export default {
 			appId: process.env.FIREBASE_APP_ID,
 			googleIos: process.env.GOOGLE_IOS_CLIENT_ID,
 			googleAndroid: process.env.GOOGLE_ANDROID_CLIENT_ID,
-			cmcApiKey: process.env.CMC_API_KEY
+			cmcApiKey: process.env.CMC_API_KEY,
+			coinApiKey: process.env.COIN_API_KEY
 		}
 	}
 };
