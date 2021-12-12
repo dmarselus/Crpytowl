@@ -13,9 +13,9 @@ export default function HomeScreen({ navigation }) {
 	}, []);
 
 	async function loadResource() {
-		const coins = await getTopCoins();
+		// const coins = await getTopCoins();
 		// console.log(coins);
-		setTopCoins(coins);
+		// setTopCoins(coins);
 	}
 	console.log(topCoins);
 	return (

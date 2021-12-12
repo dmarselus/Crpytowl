@@ -7,7 +7,7 @@ import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import { HomeScreen, SettingsScreen, LoginScreen } from '../screens';
+import { HomeScreen,ExchangeScreen,  SettingsScreen,LoginScreen } from '../screens';
 import colors from '../colors';
 
 const Tabs = AnimatedTabBarNavigator();
@@ -18,16 +18,24 @@ export default function BottomTabNavigator() {
 	const { user } = useContext(UserContext);
 
 	const BOTTOM_TAB_SCREENS = [
-		{
-			name: 'HomeScreen',
-			component: HomeScreen,
-			icon: 'home',
-			label: 'Home'
+		// {
+		// 	name: 'HomeScreen',
+		// 	component: HomeScreen,
+		// 	icon: 'home',
+
+		// 	label: 'Home'
+		// },
+	{
+			name: 'ExchangeScreen',
+			component:ExchangeScreen,
+			icon: 'swap-horizontal-circle',
+			label: 'Convert'
 		},
 		{
 			name: 'SettingsScreen',
 			component: SettingsScreen,
 			icon: 'cog',
+
 			label: 'Settings'
 		},
 		{
@@ -35,7 +43,8 @@ export default function BottomTabNavigator() {
 			component: user?.name ? SettingsScreen : LoginScreen,
 			icon: 'face',
 			label: 'Profile'
-		}
+		},
+
 	];
 
 	return (
@@ -63,7 +72,8 @@ export default function BottomTabNavigator() {
 							tabBarLabel: label,
 							tabBarIcon: ({ focused, color }) => (
 								<MaterialCommunityIcons
-									name={`${icon}${!focused ? '-outline' : ''}`}
+								name={`${icon}${focused ? '' : '-outline'}`}
+									// name={`${icon}${!focused ? '-outline' : ''}`}
 									color={focused ? colors.light : colors.dark}
 									size={26}
 								/>
